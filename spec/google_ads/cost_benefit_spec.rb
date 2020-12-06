@@ -32,5 +32,17 @@ RSpec.describe 'GoogleAds::CostBenefit' do
       expect(groups.first).to eq(result.first)
       expect(groups.last).to eq(result.last)
     end
+
+    it "with_cost_and_sorted_by_cost" do
+      groups = GoogleAds::CostBenefit.new.with_cost_per_video(sort_increasing: true)
+      result = [
+        {id_video_principal: 'v7', cost: 77.52,cost_benefit: 5.5},
+        {id_video_principal: 'v17', cost: 3.22,cost_benefit: 6.22}
+      ]
+
+      expect(groups.first).to eq(result.first)
+      expect(groups.last).to eq(result.last)
+    end
+
   end
 end
